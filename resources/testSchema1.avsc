@@ -1,0 +1,9 @@
+{
+  "type" : "record",
+  "name" : "testSchema",
+  "namespace" : "com.buildoop.kafka.test.producer",
+  "fields" : [ {
+    "name" : "testSchema1",
+    "type" : "string"
+  }]
+}
