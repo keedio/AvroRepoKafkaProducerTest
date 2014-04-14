@@ -20,4 +20,16 @@ Avro Schema Repo:
   
 Camus:
   https://github.com/mvalleavila/camus
-  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer,
+  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer, in the example it's used a camus class to encode the message, and "talk" with the Avri Schema Repository
+
+=================================
+
+## Compilation
+  mvn clean package
+  
+==================================
+
+## Use
+   - Edit resources/config.properties with the rights IP and Ports where you are running kafka brokers and the schema repo,
+         * metadata.broker.list=hadoop-manager:9092
+         * etl.schema.registry.url=http://hadoop-manager:2876/schema-repo
