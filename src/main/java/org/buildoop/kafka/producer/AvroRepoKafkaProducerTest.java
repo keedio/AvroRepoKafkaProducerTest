@@ -37,7 +37,7 @@ public class AvroRepoKafkaProducerTest
     		
     		String avroSchemaFileName = props.getProperty("avro.schema.file");
     		String topic = props.getProperty("kafka.topic");
-    		//Schema Field is the same that avroSchemaFileName without extension
+    		//Schema Field is the same that avroSchemaFileName without file extension
     		String field = avroSchemaFileName.split("/")[1].split("\\.")[0];
     		
     		File avroSchemaFile = new File(avroSchemaFileName);    		
