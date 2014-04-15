@@ -37,9 +37,7 @@ public class AvroRepoKafkaProducerTest
     		
     		String avroSchemaFileName = props.getProperty("avro.schema.file");
     		String topic = props.getProperty("kafka.topic");
-    		//Schema Field is the same that avroSchemaFileName without file extension
-    		String field = avroSchemaFileName.split("/")[1].split("\\.")[0];
-    		
+    		    		
     		File avroSchemaFile = new File(avroSchemaFileName);    		
 	
 			int fileLength=(int)avroSchemaFile.length();
@@ -60,7 +58,7 @@ public class AvroRepoKafkaProducerTest
 	            i++;
 			}
 	        
-	        Record record = fillRecord(fillAvroTestSchema(avroSchemaFile),field);
+	        Record record = fillRecord(fillAvroTestSchema(avroSchemaFile));
 	        byte[] avroRecord = encodeMessage(topic,record,props);
 	        
 	        System.out.println();
@@ -91,9 +89,9 @@ public class AvroRepoKafkaProducerTest
     	return Schema.parse(jsonSchemaFile);
     }
     
-    private static Record fillRecord(Schema schema, String field){
+    private static Record fillRecord(Schema schema){
 		Record record = new Record(schema);
-		record.put(field,"Hello World");		    	
+		record.put("test","Hello World");		    	
     	return record;
     }
     
