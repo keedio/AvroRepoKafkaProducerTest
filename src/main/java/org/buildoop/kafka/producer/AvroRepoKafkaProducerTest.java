@@ -40,24 +40,10 @@ public class AvroRepoKafkaProducerTest
     		    		
     		File avroSchemaFile = new File(avroSchemaFileName);    		
 	
-			int fileLength=(int)avroSchemaFile.length();
-			FileInputStream fis = new FileInputStream(avroSchemaFile);
-	
 	    	ProducerConfig config = new ProducerConfig(props);
 	
 	        Producer<String, byte[]> producer = new Producer<String, byte[]>(config);
 	
-	        int content;
-	        byte[] fileContent = new byte[fileLength-1];
-			int i=0;
-	
-	        while (i<fileLength -1)
-			{
-	        	content = fis.read();
-	        	fileContent[i] = (byte)(content);
-	            i++;
-			}
-	        
 	        Record record = fillRecord(fillAvroTestSchema(avroSchemaFile));
 	        byte[] avroRecord = encodeMessage(topic,record,props);
 	        
@@ -74,7 +60,6 @@ public class AvroRepoKafkaProducerTest
             producer.send(data);
 	    	
 			System.out.println();
-			fis.close();
 			producer.close();
     	}	
     	catch (IOException e)
