@@ -5,12 +5,12 @@ Basic kafka producer to send Avro Messages with an Avro schema repository.
 
 Working mode:
 
-1. Producer constructs the avro message
-2. Encodes the message using a test schema included in resources folder
-3. Fills the content of the message with some basic information.
-4. Encodes the message (using com.linkedin.camus.etl.kafka.coders.KafkaAvroMessageEncoder class)
+1. Producer construct the avro message
+2. Encode the message using a test sqchema included in folder resources
+3. Fill the content of the message with some basic information.
+4. Encode the message (using com.linkedin.camus.etl.kafka.coders.KafkaAvroMessageEncoder class)
    - KafkaAvroMessageEncoder communicates with an avro schemas repository.
-   - Avro repo sends an ID to our test program, the message is stored in Kafka with the ID in the Header and the bytes payload.
+   - Avro repo send an ID to our test program, the message is stored in Kafka with the ID in the Header and the bytes payload.
    
 
 Avro Schema Repo:
@@ -20,7 +20,7 @@ Avro Schema Repo:
   
 Camus:
   https://github.com/mvalleavila/camus
-  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer, in the example it's used a camus class to encode the message, and "talk" with the Avri Schema Repository
+  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer, in this example a camus class it's usedto encode the message, and "talk" with the Avro Schema Repository
 
 =================================
 
@@ -30,10 +30,13 @@ Camus:
 ==================================
 
 ## Use
-   - Edit resources/config.properties with the IP and Port where you are running kafka brokers and the schema repo.
+   - Edit resources/config.properties with the rights IP and Ports where you are running kafka brokers and the schema repo.
+```
      metadata.broker.list=hadoop-manager:9092   
      etl.schema.registry.url=http://hadoop-manager:2876/schema-repo    
-
-     Execute run.sh:  
-     The ID of the message received is printed in console, test sending the same message (same ID would be received), and send some different schemas (diferent ID will be received). To send different messages edit the property avro.schema.file=resources/testSchema1.avsc
-     3 test schema avsc files are included in resources. (don't use other than included in resources folder)
+```
+   - To select what Avro message will be sent edit ```avro.schema.file=resources/testSchema1.avsc```, three different files are included for three tests.
+   
+   - Execute run.sh  
+   The ID of the message received is printed in console.  
+   You can test sending the same message and check the same ID is being received.  
