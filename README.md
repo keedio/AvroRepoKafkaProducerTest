@@ -20,7 +20,7 @@ Avro Schema Repo:
   
 Camus:
   https://github.com/mvalleavila/camus
-  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer, in the example it's used a camus class to encode the message, and "talk" with the Avri Schema Repository
+  - Camus is a connection between Kafka and HDFS. So is a Kafka Consumer, in this example a camus class it's usedto encode the message, and "talk" with the Avro Schema Repository
 
 =================================
 
@@ -31,8 +31,12 @@ Camus:
 
 ## Use
    - Edit resources/config.properties with the rights IP and Ports where you are running kafka brokers and the schema repo.
+```
      metadata.broker.list=hadoop-manager:9092   
      etl.schema.registry.url=http://hadoop-manager:2876/schema-repo    
-
-     Execute run.sh -> The ID of the message received is printed in console, test sending de the same message (so receives same ID), and send some different schemas (diferrent ID will be received). To send different messages edit the property avro.schema.file=resources/testSchema1.avsc
-     3 test schema avsc files are included in resources. (donm't ise other than included in resources folder)
+```
+   - To select what Avro message will be sent edit ```avro.schema.file=resources/testSchema1.avsc```, three different files are included for three tests.
+   
+   - Execute run.sh  
+   The ID of the message received is printed in console.  
+   You can test sending the same message and check the same ID is being received.  
